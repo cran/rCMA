@@ -1,0 +1,52 @@
+\name{cmaSetStopFitness}
+\alias{cmaSetStopFitness}
+\alias{cmaSetStopMaxFunEvals}
+\alias{cmaSetStopTolFun}
+\title{rCMA Stop Conditions.}
+\usage{
+  cmaSetStopFitness(cma, d)
+
+  cmaSetStopMaxFunEvals(cma, p)
+
+  cmaSetStopTolFun(cma, d)
+}
+\arguments{
+  \item{cma}{CMA-ES Java object, created with
+  \code{\link{cmaNew}}}
+
+  \item{p}{a parameter of type long}
+
+  \item{d}{a parameter of type double}
+}
+\description{
+  Set various stop conditions of CMA-ES Java object
+  \code{cma} (only prior to \code{\link{cmaInit}}). \cr \cr
+  \code{cmaSetStopFitness} sets the stop condition: fitness
+  function below \code{d} (default: DOUBLE.MinValue) \cr
+  \code{cmaSetStopMaxFunEvals} sets the stop condition: max
+  number of fitness function evaluations \cr
+  \code{cmaSetStopTolFun} sets the stop condition: delta of
+  fitness function below \code{d} (default: 1e-12) \cr
+}
+\note{
+  If your fitness can become negative, you need to set
+  \code{cmaSetStopFitness} to a value different from the
+  default to prevent premature stopping.
+
+  The properties file (read by \code{\link{cmaNew}}) can be
+  used to set further stop conditions.  If they are not
+  set, the following defaults are active: \tabular{ccc}{
+  name \tab default setting \tab meaning \cr stopTolFunHist
+  \tab 1e-13 \tab similar to stopTolFun, see CMA-ES Javadoc
+  for details \cr stopTolX \tab 0.0 \tab stop if seacrh
+  steps become smaller than stopTolX \cr stopTolXfactor
+  \tab 0.0 \tab stop if search steps become smaller than
+  stopTolXFactor * initial step size \cr stopMaxIter \tab
+  +Inf \tab stop if number of iterations (generations) are
+  greater }
+}
+\seealso{
+  \code{\link{cmaSetDimension}}, \code{\link{cmaNew}},
+  \code{\link{cmaInit}}
+}
+
