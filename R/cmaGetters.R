@@ -24,42 +24,42 @@
 #' @seealso   \code{\link{cmaSetStopFitness}}, \code{\link{cmaNew}}, \code{\link{cmaInit}}
 #' @export
 cmaSetDimension <- function(cma,i) {
-  .jcall(cma,,"setDimension",as.integer(i));
+  rJava::.jcall(cma,,"setDimension",as.integer(i));
 }
 #' @rdname cmaSetDimension
 #' @export
 cmaGetDimension <- function(cma) {
-  .jcall(cma,"I","getDimension");
+  rJava::.jcall(cma,"I","getDimension");
 }
 #' @rdname cmaSetDimension
 #' @export
 cmaSetPopulationSize <- function(cma,i) {
-  .jcall(cma,,"setPopulationSize",as.integer(i));
+  rJava::.jcall(cma,,"setPopulationSize",as.integer(i));
 }
 #' @rdname cmaSetDimension
 #' @export
 cmaGetPopulationSize <- function(cma) {
-  .jcall(cma,"I","getPopulationSize");
+  rJava::.jcall(cma,"I","getPopulationSize");
 }
 #' @rdname cmaSetDimension
 #' @export
 cmaSetInitialX <- function(cma,initialX) {
-  .jcall(cma,,"setInitialX",initialX);
+  rJava::.jcall(cma,,"setInitialX",initialX);
 }
 #' @rdname cmaSetDimension
 #' @export
 cmaGetInitialX <- function(cma) {
-  .jcall(cma,"[D","getInitialX");
+  rJava::.jcall(cma,"[D","getInitialX");
 }
 #' @rdname cmaSetDimension
 #' @export
 cmaSetCountEval <- function(cma,p) {
-  .jcall(cma,"J","setCountEval",.jlong(p));
+  rJava::.jcall(cma,"J","setCountEval",rJava::.jlong(p));
 }
 #' @rdname cmaSetDimension
 #' @export
 cmaGetCountEval <- function(cma) {
-  .jcall(cma,"J","getCountEval");
+  rJava::.jcall(cma,"J","getCountEval");
 }
 
 ######################################################################################
@@ -92,16 +92,16 @@ cmaGetCountEval <- function(cma) {
 #' @seealso   \code{\link{cmaSetDimension}}, \code{\link{cmaNew}}, \code{\link{cmaInit}}
 #' @export
 cmaSetStopFitness <- function(cma,d) {
-  .jcall(cma,,"setOptionsStopFitness",as.double(d));
+  rJava::.jcall(cma,,"setOptionsStopFitness",as.double(d));
 }
 #' @rdname cmaSetStopFitness
 #' @export
 cmaSetStopMaxFunEvals <- function(cma,p) {
-  .jcall(cma,,"setOptionsStopMaxFunEvals",.jlong(p));
+  rJava::.jcall(cma,,"setOptionsStopMaxFunEvals",rJava::.jlong(p));
 }
 #' @rdname cmaSetStopFitness
 #' @export
 cmaSetStopTolFun <- function(cma,d) {
-  .jcall(cma,,"setOptionsStopTolFun",as.double(d));
+  rJava::.jcall(cma,,"setOptionsStopTolFun",as.double(d));
 }
 

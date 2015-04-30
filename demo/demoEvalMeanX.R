@@ -2,19 +2,24 @@
 ##
 ## 
 cmaEvalMeanX <- function(cma,fitFunc,isFeasible) {
-    meanX = .jcall(cma,"[D","getMeanX");
+    meanX = rJava::.jcall(cma,"[D","getMeanX");
     rType = "Lfr/inria/optimization/cmaes/CMASolution;";
     if (isFeasible(meanX)) {
-      bestSolutionObj = .jcall(cma,rType,"setFitnessOfMeanX",fitFunc(meanX));
+      bestSolutionObj = rJava::.jcall(cma,rType,"setFitnessOfMeanX",fitFunc(meanX));
       # setFitnessOfMeanX may update the best-ever solution
     }  else {
-      bestSolutionObj = .jcall(cma,rType,"getBestSolution");
+      bestSolutionObj = rJava::.jcall(cma,rType,"getBestSolution");
     }
-    bestSolution = list(bestX = .jcall(bestSolutionObj,"[D","getX")
+    bestSolution = list(bestX = rJava::.jcall(bestSolutionObj,"[D","getX")
                       , meanX = meanX
-                      , bestFitness = .jcall(bestSolutionObj,"D","getFitness")
-                      , bestEvalNum = .jcall(bestSolutionObj,"J","getEvaluationNumber")
+                      , bestFitness = rJava::.jcall(bestSolutionObj,"D","getFitness")
+                      , bestEvalNum = rJava::.jcall(bestSolutionObj,"J","getEvaluationNumber")
+                      , lastEvalNum = rJava::.jcall(cma,"J","getCountEval")
                       );
+    if (bestSolution$bestEvalNum == bestSolution$lastEvalNum & isFeasible(meanX))
+      bestSolution$bestX = bestSolution$meanX;
+
+    return(bestSolution);
 }
 
 ## just to show the syntax, without calling cmaOptimDP

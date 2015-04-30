@@ -9,13 +9,15 @@
 ## for further details.
 ##
 ## The problem solved is TR2 (tangent problem with dim=2, fitFunc=sphere with a
-## linear tangent constraint in function isFeasible). 
+## linear tangent constraint in function isFeasible, see demoCMA2.R). 
 ##
 require(rJava)
 .jinit()
-cmaJarFile <- paste(.find.package("rCMA"), "cma_jAll.jar",sep="/");
+cmaJarFile <- paste(find.package("rCMA"), "java/cma_jAll.jar",sep="/");
 if (!file.exists(cmaJarFile)) stop(sprintf("cmaJarFile=%s not found",cmaJarFile));
 .jaddClassPath(cmaJarFile);
+propFile <- paste(find.package("rCMA"),"CMAEvolutionStrategy.properties",sep="/")
+
 
 fitFunc <- function(x) {
     sum(x*x);
@@ -25,7 +27,7 @@ isFeasible <- function(x) {
 }
 
 cma <- .jnew("fr/inria/optimization/cmaes/CMAEvolutionStrategy")
-props <- .jcall(cma,"Ljava/util/Properties;","readProperties");
+props <- .jcall(cma,"Ljava/util/Properties;","readProperties",propFile);
 ## function readProperties returns an object of class Properties --> the correct
 ## JNI specification of the return type is "Ljava/util/Properties;" 
 ## (Note the terminating ";" !). See cmaEvalMeanX.R

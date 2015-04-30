@@ -1,16 +1,18 @@
 Package: rCMA
 Type: Package
-Title: CMA-ES R-to-Java interface
-Version: 1.0.0
-Date: 01.03.2013
-Author: Wolfgang Konen <wolfgang.konen@fh-koeln.de>
+Title: R-to-Java Interface for 'CMA-ES'
+Version: 1.1
+Date: 2015-04-30
+Author: Wolfgang Konen <wolfgang.konen@fh-koeln.de>, Nikolaus Hansen <hansen .AT. lri.fr>
 Maintainer: Wolfgang Konen <wolfgang.konen@fh-koeln.de>
-Description: rCMA allows access to the Java version
-        (CMAEvolutionStrategy) of Niko Hansen.
-License: GPL (>= 2)
-Depends: R (>= 2.14.0), rJava
+Description: Tool for providing access to the Java version 'CMAEvolutionStrategy' of
+    Nikolaus Hansen. 'CMA-ES' is the Covariance Matrix Adaptation Evolution Strategy,
+    see https://www.lri.fr/~hansen/cmaes_inmatlab.html#java.
+License: GPL (>= 3)
+Depends: R (>= 2.14.0),
+Suggests: rJava
 Collate: 'rCMA.R' 'cmaGetters.R' 'cmaEvalMeanX.R'
-Packaged: 2013-03-01 11:50:48 UTC; wolfgang
+Packaged: 2015-04-30 08:36:45 UTC; wolfgang
 NeedsCompilation: no
 Repository: CRAN
-Date/Publication: 2013-03-01 13:41:10
+Date/Publication: 2015-04-30 20:51:29
