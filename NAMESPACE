@@ -18,3 +18,5 @@ export(cmaSetStopFitness)
 export(cmaSetStopMaxFunEvals)
 export(cmaSetStopTolFun)
 export(cmaUpdateDistribution)
+
+importFrom("utils", "flush.console")
